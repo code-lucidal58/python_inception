@@ -47,9 +47,14 @@ s = "Hello There"
 print(s.startwith("Hello")) # True
 print(s.endwith("era")) # False
 ```
-**.split()** function is called on a string, returns a list, where elements are decided based on a delimiter.
+```.split()``` function is called on a string, returns a list, where elements are decided based on a delimiter.
 ```python
 s="My name is Joker"
 print(s.split(' ')) #['My', 'name', 'is','Joker']
 print("12-08-2018".split('-')) # ["12","08","2018"]
+```
+```.strip()``` removes trailing whitespaces in the string.
+```python
+s = "    hello     "
+print(s.strip()) #hello
 ```
