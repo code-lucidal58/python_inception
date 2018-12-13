@@ -12,21 +12,6 @@ age = 10
 print("My age is", n) # My age is 10
 ```
 
-### List
-Lists are similar to arrays. The following operations can be performed on a list.
-```Python
-l = []
-l.insert(1,3) # (index, value)
-l.append(8) #add to the end of list
-l.remove(6) #removes the first instance of the data in the list
-l.pop() # removes last element 
-print(l) #prints list
-l.sort() # sorts list in ascending order
-l.reverse() #this does not change the origib]nal list. Used to reverse order of elements
-```
-Sorting a nested list based on say nth element of the list elements in list:
-```l.sort(key = lambda x: x[3])``` where n is 3 here. Soring is done based on 4th element
-
 ### Conditional
 #### If else statements
 ```Python
@@ -52,4 +37,10 @@ The third parameter is the step size.
 # prints square of all numbers from 0 to 99, each in new line
 for i in range(100):
   print(i**2) 
+```
+### Rounding of numbers
+```python
+x = 12.3456789
+print(round(x,2)) #12.35
+print("{0:.2f}".format(x)) # 12.35
 ```
