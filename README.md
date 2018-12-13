@@ -38,6 +38,12 @@ The third parameter is the step size.
 for i in range(100):
   print(i**2) 
 ```
+To get index and value, both, while traversing an iterable, enumerate is used.
+```python
+for i,item in demo_list:
+  print("index is", i, "and value is", item)
+```
+
 ### Rounding of numbers
 ```python
 x = 12.3456789
