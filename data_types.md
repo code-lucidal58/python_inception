@@ -12,6 +12,11 @@ l.reverse() #this does not change the origib]nal list. Used to reverse order of 
 ```
 Sorting a nested list based on say nth element of the list elements in list:
 ```l.sort(key = lambda x: x[3])``` where n is 3 here. Soring is done based on 4th element
+To print a list, where each element is separated by a common sequence, **.join()** is used.
+```python
+l=[1,2,3,4]
+print(" ".join(l)) # 1 2 3 4
+```
 
 ### Map
 The **map()** function applies a given function to each item of an iterable (list, tuple etc.) and returns a map object of the 
@@ -41,4 +46,10 @@ respectively.
 s = "Hello There"
 print(s.startwith("Hello")) # True
 print(s.endwith("era")) # False
+```
+**.split()** function is called on a string, returns a list, where elements are decided based on a delimiter.
+```python
+s="My name is Joker"
+print(s.split(' ')) #['My', 'name', 'is','Joker']
+print("12-08-2018".split('-')) # ["12","08","2018"]
 ```
