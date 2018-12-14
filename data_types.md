@@ -40,6 +40,8 @@ result = list(map(lambda n1, n2: n1+n2, num1, num2))
 ```
 
 ### Strings
+Strings are immutable. They can be modified oly through string function. If character-wise operation is to be performed, convert 
+the string to list ```s=list(string)```. After perform operation, convert it  back to string ```"".join(s)```.
 ```.startwith``` and ```endswith``` are two methods that can be used with string to check the starting and ending substring 
 respectively.
 ```python
@@ -57,4 +59,16 @@ print("12-08-2018".split('-')) # ["12","08","2018"]
 ```python
 s = "    hello     "
 print(s.strip()) #hello
+```
+To check content and case of string;
+```python
+string = "Hello World"
+len(string) #11
+string.isalnum() #True
+string.isalpha() #True
+string.isdigit() #False
+string.isupper() #False
+string.islower() #False
+string.upper() #HELLO WORLD
+string.lower() #hello world
 ```
