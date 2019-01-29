@@ -92,3 +92,5 @@ Output:
 Monday Tuesday Wednesday Thursday Friday Saturday Sunday
 '''
 ```
+
+***NOTE***: Reference files: [april_fool_day.py](https://github.com/code-lucidal58/python_inception/blob/master/examples/april_fool_day.py) and [team_meeting.py](https://github.com/code-lucidal58/python_inception/blob/master/examples/team_meeting.py)
