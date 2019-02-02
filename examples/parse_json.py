@@ -8,11 +8,21 @@ def print_results(data):
         print(json_data["metadata"]["title"])
     count = json_data["metadata"]["count"]
     print(count, "events recorded")
+    print('__________________________\n')
     for i in json_data["features"]:
         print(i["properties"]["place"])
+    print('__________________________\n')
     for i in json_data["features"]:
         if i["properties"]["mag"] >= 4.0:
             print("%2.1f" % i["properties"]["mag"], i["properties"]["place"])
+        print('__________________________\n')
+        print("Events that were felt")
+        for i in json_data["features"]:
+            felt_reports = i["properties"]["felt"]
+            if felt_reports is not None:
+                if felt_reports > 0:
+                    print("%2.1f" % i["properties"]["mag"], i["properties"]["place"],
+                          "reported " + str(felt_reports) + " times")
 
 
 def main():
