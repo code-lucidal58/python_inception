@@ -11,7 +11,7 @@ webUrl = urllib.request.urlopen("http://www.google.com")
 
 ```.getcode()``` returns the status code of the connection establishment.  
 ```.read()``` return the HTML data of the webpage.  
-
+## JSON Parsing
 **Refer parse_json.py**
 If a get type request is made on an API, it will return a response. Here ```.read()``` function will
 return the json response. To parse json ```json``` module of Python is used.
@@ -23,5 +23,25 @@ Here *response* is in bytes and *json_data* is a python dictionary. Hence ```jso
 implicitly converts bytes to string and returns a dictionary. The response from API
 can now to accessed as a normal python dictionary.
 
+## HTML Parsing
 **Refer parse_html.py**
-Python provides modules to parse HTML as well. 
+Python provides class to parse HTML as well. Custom HTMLParser is developed to override methods and performs
+required tasks.
+```python
+from html.parser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    def error(self, message):
+        pass
+        
+parser = MyHTMLParser()
+f = open("sample.html")
+if f.mode == 'r':  # file successfully opened
+    contents = f.read()
+    parser.feed(contents)
+
+```
+```error``` is an abstract method of ```HTMLParser``` class. There are other methods that can be overridden
+to add required functionality, like ```handleComment```, ```HandleStartTag```, ```HandelData```, etc. 
+
+## XML Parsing
