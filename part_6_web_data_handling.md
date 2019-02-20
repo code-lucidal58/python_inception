@@ -45,3 +45,16 @@ if f.mode == 'r':  # file successfully opened
 to add required functionality, like ```handleComment```, ```HandleStartTag```, ```HandelData```, etc. 
 
 ## XML Parsing
+**Refer parse_xml.py**
+Sometimes it is required to operate on the document as whole
+by storing it in the memory, rather than reading it line by line. This is required
+when manipulations and operations are to be performed repetitively and at will. For this, 
+operate on the DOM. While working .xml file, ```xml.dom.minidom``` can be used to store the
+document in the memory.
+```python
+import xml.dom.minidom
+doc = xml.dom.minidom.parse("sample.xml")
+```
+Here ```doc``` is an object of type **xml.dom.minidom.Document**. In the dom element, each tag is a node. An nodes 
+have children. Using this object, data can be manipulated or read. Any changes made to this document will not be
+reflected to the xml file.
