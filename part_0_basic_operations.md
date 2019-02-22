@@ -15,10 +15,22 @@ print("gddg", end='')
 age = 10
 print("My age is", n) # My age is 10
 ```
-
+### Comments
+Single line comments start with hash(#). Multi line comments start and end with ````''' '''```.
+```python
+# This is a single line comment
+'''
+This is a multi line comment
+This is also a comment.
+'''
+```
 ### Rounding of numbers
 ```python
 x = 12.3456789
 print(round(x,2)) #12.35
 print("{0:.2f}".format(x)) # 12.35
 ```
+### Mathematical Operators
++,-,* and \ having their usual meanings.
+** stands for ‘to the power’. 8=2**3  
+%- modulo
