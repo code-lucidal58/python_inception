@@ -1,4 +1,9 @@
 ## Basic Operations
+### Variables
+Variables creation does not require any keyword, nether data type is to be mentioned.
+```python
+x = 20
+```
 ### Print statement
 print in python takes only string arguements. If found otherwise, implicitly typecasts to string. A new line is by default 
 added to the end. When string concatenation is performed using comma in *print*, each part is implicityly converted to string. 
