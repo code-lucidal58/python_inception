@@ -1,3 +1,6 @@
+## Python data types
+### Boolean
+The boolean values are : ```True``` and ```False```.
 ### List
 Lists are similar to arrays. The following operations can be performed on a list.
 ```Python
