@@ -1,7 +1,7 @@
-## Loops and Conditionals
+# Loops and Conditionals
 Python supports **for, while, if-elif-else** blocks.
-### If-elif-else
-The concepy of if-else block is similar to any other language.
+## If-elif-else
+The concept of if-else block is similar to any other language.
 ```Python
 x = 10
 if x>10:
@@ -12,18 +12,20 @@ else:
   print("x is equal to 10")
 ```
 
-### While
-While loop continues execution till the condition given in true. If the condition involves variable, it must be updated in each
-loop statement execution. Otherwise it may result in infinite loop. This execution style is used when the number of times
-the statement block is to be executed is unknown.
+## While
+While loop continues execution till the condition given in true. If the condition involves variable, it must be updated 
+in each loop statement execution. Otherwise it may result in infinite loop. This execution style is used when the number 
+of times the statement block is to be executed is unknown.
 ```Python
 x = 10
 while x>=0:
   print(x)
   x-=1
 ```
+An `else` block can also be added to `while`. The `else` block statements will execute when the `while` loop condition turns
+out to be false.
 
-### for
+## For loop
 This is mainly used to iterate through iterables i.e. list, dictionary, set, etc.
 ```Python
 d = {"a":1,"b":2,"c":3}
@@ -46,14 +48,17 @@ for i, value in enumerate(arr):
 2 6
 '''
 ```
-`.enumerate()` return index and value.  
-`range()` is a very interesting function in Python. It is used to traverse through pre-defined sequences like integers.  
+`enumerate()` returns index and value.  
+`range()` is used to traverse through pre-defined sequences like integers. Atleast one argument is required. 
 `range(10)` : returns a list wth numbers from 0 to 9.  
 `range(1,10)` : returns a list wth numbers from 1 to 9.  
 `range(1,10, 2)` : returns a list wth numbers from 1 to 9, with step size 2 i.e. [1,3,5,7,9]  
-This can be traversed in *for* loop as follows: 
+This can be traversed in `for` loop as follows: 
 ```python
 for i in range(1, 101):
   print(i**2)
 ```
 This will print square of all numbers from 1 to 100.
+
+[Next](./part_3_date_time.md)  
+[Back](/README.md)

@@ -116,5 +116,5 @@ If a key is being accessed, which does not exist in the dictionary, Python throw
 ## Other data types
 complex, byte, bytearray, tuples, set, frozenset
 
-[Next](./part_3_date_time.md)  
+[Next](./part_2_loop_conditionals.md)  
 [Back](/README.md)
