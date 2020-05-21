@@ -1,11 +1,10 @@
-## Date and Time
-Date time operations in Python is performed usinf *datetime* library in python. This is one of the inbuilt libraries of Python.
+# Date and Time
+Date time operations in Python is performed using Python's built-in library `datetime`.
 ```Python
 from datetime import date 
-from datetime import time
 from datetime import datetime
 
-today = date.today()
+today = date.today() # datetime.date(2019, 1, 28)
 print(today) # 2019-01-28
 print(today.day, today.month, today.year) # 28 1 2019
 print(today.weekday()) # 0
@@ -15,14 +14,12 @@ print(today) # 2019-01-28 18:35:27.562771
 t = datetime.time(datetime.now())
 print(t) # 18:35:27.563741
 ```
-```today.weekday()``` returns an integers in the range 0 to 6, where 0 represents Monday and 6 represents Sunday.
+`today.weekday()` returns an integers in the range 0 to 6, where 0 represents Monday and 6 represents Sunday.
 
-### Date and Time Formating
-### Time Delta
+## Date and Time Formatting
+## Time Delta
 This module is used to perform date and time calculations. 
 ```Python
-from datetime import date 
-from datetime import time
 from datetime import datetime
 from datetime import timedelta
 
@@ -31,10 +28,10 @@ today  = datetime.now()
 print(today + timedelta(days=60)) # 2019-03-29 18:41:46.720811
 print(today - timedelta(days=57)) # 2018-12-02 18:42:36.774421
 ```
-**timedelta** object takes the following parameters: days, seconds, microseconds, milliseconds, minutes, hours, weeks. 
+`timedelta` object takes the following parameters: days, seconds, microseconds, milliseconds, minutes, hours, weeks. 
 To find past or future dates, simply use plus or minus sign with the required difference from current date.
 
-### Calendar
+## Calendar
 Calendar related operations and displaying in formatted way.
 ```Python
 import calendar
@@ -70,8 +67,9 @@ Mo Tu We Th Fr Sa Su
 </table>
 '''
 ```
-```.HTMLCalendar``` return HTML code for the calendar in table format. ```Calendar.SUNDAY``` indicates that the first day 
-in the formatted calendar will be Sunday. In the above example, ```Calendar.MONDAY``` is used. Hence, we can see in the output that the first day in the representation is Monday.
+`.HTMLCalendar` return HTML code for the calendar in table format. `Calendar.SUNDAY` indicates that the first day 
+in the formatted calendar will be Sunday. In the above example, `Calendar.MONDAY` is used. Hence, we can see in the 
+output that the first day in the representation is Monday.
 #### Iterating through dates of a month
 ```Python
 import calendar
@@ -92,5 +90,7 @@ Output:
 Monday Tuesday Wednesday Thursday Friday Saturday Sunday
 '''
 ```
+Reference files: [april_fool_day.py](./examples/april_fool_day.py) and [team_meeting.py](./examples/team_meeting.py)
 
-***NOTE***: Reference files: [april_fool_day.py](https://github.com/code-lucidal58/python_inception/blob/master/examples/april_fool_day.py) and [team_meeting.py](https://github.com/code-lucidal58/python_inception/blob/master/examples/team_meeting.py)
+[Next](./part_4_functions.md)  
+[Back](/README.md)
