@@ -38,7 +38,7 @@ import os
 from os import path
 from shutil import make_archive
 from zipfile import ZipFile
-shutil.copy(src, dest) # copoy file from src to destination
+shutil.copy(src, dest) # copy file from src to destination
 # destination should contain file name as well
 os.rename("old_name", "new_name")
 # To zip a folder
@@ -49,3 +49,6 @@ with ZipFile("textarchive.zip", "w") as newzip:
     newzip.write("textfile.txt")
     newzip.write("textfile.txt.bak")
 ```
+
+[Next](./part_6_web_data_handling.md)  
+[Back](/README.md)
