@@ -103,4 +103,107 @@ Static methods are global functions in the class namespace. It is used when a si
 case, the attribute `__bookList`. There are not many great usages of static methods.
 
 ## Inheritance
+ It defines a way to inherit attributes from one or many base classes. This can be used to reduce duplications. For example,
+ a base class named `Publication` with title and price attributes, can be inherited by classes Magazine, Newspaper, and Book.
+ ```python
+class Publication:
+    def __init__(self, title, price):
+        self.tittle = title
+        self.price = price
+
+
+class Periodical(Publication):
+    def __init__(self, title, price, publisher, period):
+        super().__init__(title, price)
+        self.publisher = publisher
+        self.period = period
+
+
+class Book(Publication):
+    def __init__(self, title, price, pages, author):
+        super().__init__(title, price)
+        self.pages = pages
+        self.author = author
+
+
+class Newspaper(Periodical):
+    def __init__(self, title, price, publisher, period):
+        super().__init__(title, price, publisher, period)
+
+
+class Magazine(Periodical):
+    def __init__(self, title, price, publisher, period):
+        super().__init__(title, price, publisher, period)
+```
+`Abstract Class` are templates for the inheriting class to follow. They have methods that child class has to implement.
+Basically, they are used to enforce class constraints. One more constraint is that user will not be allowed to create an
+object of the abstract class. All this constraints are followed by using `abc` standard module. 
+```python
+from abc import ABC, abstractmethod
+
+class GraphicShape(ABC):
+    def __init__(self):
+        super().__init__()
+
+    @abstractmethod
+    def calcArea(self):
+        pass
+
+class Circle(GraphicShape):
+    def __init__(self, radius):
+        super().__init__()
+        self.radius = radius
+
+    def calcArea(self):
+        return 3.14 * (self.radius ** 2)
+
+class Square(GraphicShape):
+    def __init__(self, side):
+        super().__init__()
+        self.side = side
+
+    def calcArea(self):
+        return self.side ** 2
+
+c = Circle(10)
+print(c.calcArea())  # 314
+s = Square(10)
+print(s.calcArea())  # 100
+g = GraphicShape()  # TypeError: Can't instantiate abstract class GraphicShape with abstract methods calcArea
+```
+Python allows multiple inheritance, by mentioning the class names in the parentheses, separated by comma. This type of 
+inheritance should be used carefully.
+```python
+class A:
+    def __init__(self):
+        super().__init__()
+        self.foo = "foo"
+        self.name = "class A"
+
+class B:
+    def __init__(self):
+        super().__init__()
+        self.bar = "bar"
+        self.name = "class B"
+
+class C(A, B):
+    def __init__(self):
+        super().__init__()
+
+    def showprops(self):
+        print(self.foo) # foo
+        print(self.bar) # bar
+        print(self.name) # class A
+
+c = C()
+c.showprops()
+print(C.__mro__) # (<class '__main__.C'>, <class '__main__.A'>, <class '__main__.B'>, <class 'object'>)
+```
+All classes, be it base or child, should implement `super().__init()`. Method Resolution Order (MRO) is a way in which complier
+searches for attributes. It always searches the current class first. Then the parent classes in the order they are mentioned
+inside parentheses. You can see the MRO using the function `__mro__` called on class.
+
+Multiple Inheritance is important while creating interfaces.
+
+## Interfaces
  
