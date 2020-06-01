@@ -22,10 +22,10 @@ class Book:
         self.title = title
         self.price = price
         self.__secret = "Hello there!"
-        
+
     def get_price(self):
         if hasattr(self, '_discount'):
-            return self.price - (self.price*self._discount)
+            return self.price - (self.price * self._discount)
         else:
             return self.price
 
@@ -33,15 +33,14 @@ class Book:
         self._discount = amount
 
 b = Book("War and Peace", 39.95)
-print(b.title) #The monk who solved his ferrari
-print(b.get_price())
+print(b.title)  # War and Peace
+print(b.get_price()) # 39.95
 b.set_discount(0.25)
-print(b.price)
-print(b.__secret)
-print(b._Book_secret)
-print(type(b))
-print(isinstance(b, Book))
-print(isinstance(b, object))
+print(b.get_price()) # 29.9625
+print(b._Book__secret) # Hello there!
+print(type(b)) # <class '__main__.Book'>
+print(isinstance(b, Book)) # True
+print(isinstance(b, object)) # True
 ```
 Here `title` is called the `instance attribute`, because the value to this attribute is unique for each instance. Similarly, 
 `instance methods` will have their first parameter as the object as `self`. In the `set_discount` method, a new instance
@@ -58,7 +57,7 @@ because all classes in Python inherit `object` class.
 ```python
 class Book:
     book_types = ("hard cover", "paper back", "ebook")
-    
+
     @classmethod
     def get_book_types(cls):
         return cls.book_types
@@ -70,9 +69,9 @@ class Book:
         else:
             self.book_type = booktype
 
-print(Book.get_book_types())
+print(Book.get_book_types()) # ('hard cover', 'paper back', 'ebook')
 b1 = Book("Title1", "hard cover")
-b2 = Book("Title2", "comic")
+b2 = Book("Title2", "comic") # ValueError: comic is not a valid book type
 ```
 `book_type` is a class attribute. It is not unique to an instance. Any change made to this attribute will be adopted by all objects,
 even by the one already created. Similarly, `get_book_types` is a class method. They work on class. That is why, there is atleast one
@@ -80,13 +79,14 @@ parameter to such method, that is the class itself.
 
 ```python
 class Book:
-
     __bookList = None
+
     @staticmethod
     def getbooklist():
-        if Book.__bookList is None :
-            Book.bookList = []
+        if Book.__bookList is None:
+            Book.__bookList = []
         return Book.__bookList
+
     def __init__(self, title, booktype):
         self.title = title
         self.book_type = booktype
@@ -97,7 +97,7 @@ b2 = Book("Title 2", "soft")
 books = Book.getbooklist()
 books.append(b1)
 books.append(b2)
-print(books)
+print(books) # [<__main__.Book object at 0x01087178>, <__main__.Book object at 0x010871D8>]
 ```
 Static methods are global functions in the class namespace. It is used when a singleton object is created for the class, like in this
 case, the attribute `__bookList`. There are not many great usages of static methods.
@@ -206,4 +206,83 @@ inside parentheses. You can see the MRO using the function `__mro__` called on c
 Multiple Inheritance is important while creating interfaces.
 
 ## Interfaces
- 
+Python does not provide interface implementation. However, it can be written using abstract as well as multiple inheritance
+concept.
+```python
+from abc import ABC, abstractmethod
+
+class JSONify(ABC):
+    @abstractmethod
+    def toJSON(self):
+        pass
+
+class GraphicShape(ABC):
+    def __init__(self):
+        super().__init__()
+
+    @abstractmethod
+    def calcArea(self):
+        pass
+
+class Circle(GraphicShape, JSONify):
+    def __init__(self, radius):
+        super().__init__()
+        self.radius = radius
+
+    def calcArea(self):
+        return 3.14 * (self.radius ** 2)
+
+    def toJSON(self):
+        return f"{{\"circle\":{str(self.calcArea())} }}"
+
+c = Circle(10)
+print(c.calcArea()) # 314
+print(c.toJSON()) # {"circle":314.0 }
+```
+Interfaces are classes where all methods are by default abstract.
+
+## Composition
+It builds objects out of other objects. It has more of a `has relationship`. Book has an attribute author. Author has 
+attributes firstname and lastname. Inheritance and composition can be combined. It is used to reduce a monolithic structure
+into a simplified format.
+```python
+class Author:
+    def __init__(self, fname, lname):
+        self.fname = fname
+        self.lname = lname
+
+    def __str__(self):
+        return f"{self.fname} {self.lname}"
+
+class Chapter:
+    def __init__(self, name, page_count):
+        self.name = name
+        self.page_count = page_count
+
+class Book:
+    def __init__(self, title, price, author=None):
+        self.title = title
+        self.price = price
+        self.author = author
+        self.chapters = []
+
+    def add_chapter(self, chapter):
+        self.chapters.append(chapter)
+
+    def get_book_page_counts(self):
+        result = 0
+        for ch in self.chapters:
+            result += ch.page_count
+
+        return result
+
+author = Author("Leo", "Tolstoy")
+b = Book("War and Peace", 39.0, author)
+b.add_chapter(Chapter("c1", 129))
+b.add_chapter(Chapter("c2", 190))
+b.add_chapter(Chapter("c3", 89))
+print(b.title, b.author, b.get_book_page_counts()) # War and Peace Leo Tolstoy 408
+```
+
+[Next](./part_8_oop_2.md)  
+[Index](/README.md)
