@@ -51,4 +51,4 @@ with ZipFile("textarchive.zip", "w") as newzip:
 ```
 
 [Next](./part_6_web_data_handling.md)  
-[Back](/README.md)
+[Index](/README.md)

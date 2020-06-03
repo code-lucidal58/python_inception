@@ -34,6 +34,7 @@ print("{0:.2f}".format(x)) # 12.35
 ## Mathematical Operators
 +,-,* and \ having their usual meanings. ** stands for ‘to the power’ i.e. exponent. `2**3 = 8`. % - modulo
 
-If you are searching for some interesting module/program, check [this](./examples/turtle_basic.py) out.  
+If you are searching for some interesting module/program, check [this](./examples/turtle_basic.py) out. 
+ 
 [Next](./part_1_data_types.md)  
-[Back](/README.md)
+[Index](/README.md)

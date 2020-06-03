@@ -58,5 +58,6 @@ doc = xml.dom.minidom.parse("sample.xml")
 Here ```doc``` is an object of type **xml.dom.minidom.Document**. In the dom element, each tag is a node. An nodes 
 have children. Using this object, data can be manipulated or read. Any changes made to this document will not be
 reflected to the xml file.
-  
+
+[Next](./part_7_oop_1.md)  
 [Back](/README.md)

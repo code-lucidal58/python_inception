@@ -22,3 +22,6 @@ print(product(1,2,3)) # 6
 print(product(1,b=5)) # 50
 print(product(a=3, c=3)) # 63
 ```
+
+[Next](./part_5_file_handling.md)  
+[Index](/README.md)

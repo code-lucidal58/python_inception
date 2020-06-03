@@ -61,4 +61,4 @@ for i in range(1, 101):
 This will print square of all numbers from 1 to 100.
 
 [Next](./part_3_date_time.md)  
-[Back](/README.md)
+[Index](/README.md)

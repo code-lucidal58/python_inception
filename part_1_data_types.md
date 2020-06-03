@@ -117,4 +117,4 @@ If a key is being accessed, which does not exist in the dictionary, Python throw
 complex, byte, bytearray, tuples, set, frozenset
 
 [Next](./part_2_loop_conditionals.md)  
-[Back](/README.md)
+[Index](/README.md)
