@@ -5,6 +5,16 @@ Variables creation does not require any keyword, neither data type is to be ment
 ```python
 x = 20
 ```
+Python is case sensitive. The varaible must start with [A-Za-z\_], and can be followed by [A-Za-z0-9\_]. However, they
+cannot be reserved words. Following are the naming conventions:
+* Package name : short, all lowercase, preferable no underscore
+* Module : short, all lowercase, can have  underscore
+* Classes : UpperCamel Case
+* Functions : lowercase, snake_case
+* Variable : lowercase, snake_case
+* Constants : all uppercase, words separated by underscore
+These conventions are made to write a standardized code, and increase readability.
+
 ## Print statement
 `print` in Python takes only string arguments. If found otherwise, it is implicitly typecast to string. A new line is 
 by default added to the end. When string concatenation is performed using comma in `print`, each part is implicitly 
@@ -24,6 +34,23 @@ Single line comments start with hash(#). Multi line comments or docstrings start
 This is a multi line comment
 This is also a docstring.
 """
+```
+You can write comments in between lists of functions parameters as well. One thing to take care is, comment should be the last
+ting in that line, just before Implicit new line
+```python
+l = [1, #first element
+2 # second element
+,3 ]
+print(l)  # [1,2,3]
+sum(l #first element
+)
+```
+However, if you are using backslash in logical statements, you cannot write comments after the backslash(\).
+```python
+if a \
+and b\ 
+and c: # indentation does not matter here
+    pass
 ```
 ## Rounding of numbers
 ```python

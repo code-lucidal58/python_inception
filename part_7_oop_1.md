@@ -102,6 +102,29 @@ print(books) # [<__main__.Book object at 0x01087178>, <__main__.Book object at 0
 Static methods are global functions in the class namespace. It is used when a singleton object is created for the class, like in this
 case, the attribute `__bookList`. There are not many great usages of static methods.
 
+There are other usages of annotations, like `@property` can used for attribute getter functions, and `@<instance_name>.setter`
+can be used as attribute setter function.
+```python
+class Rectangle:
+    def __init__(self, width, height):
+        self._width = width
+        self._height = height
+
+    @property
+    def width(self):
+        return self._width
+
+    @width.setter
+    def width(self, width):
+        if width <= 0:
+            raise ValueError("width has to be positive")
+        self._width = width
+
+r = Rectangle(10, 20)
+print(r.width)  # 10
+# r.width = -10  # ValueError: width has to be positive
+r1 = Rectangle(-10, 20)  # works unless __init__ also uses setter getter functions
+```
 ## Inheritance
  It defines a way to inherit attributes from one or many base classes. This can be used to reduce duplications. For example,
  a base class named `Publication` with title and price attributes, can be inherited by classes Magazine, Newspaper, and Book.

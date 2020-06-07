@@ -1,7 +1,7 @@
 # Python data types
 
 ## Boolean
-The boolean values are : `True` and `False`.
+The boolean values are : `True` and `False`. They are also integral values.
 
 ## List
 Lists are similar to arrays. The following operations can be performed on a list.
@@ -71,6 +71,9 @@ respectively.
 s = "Hello There"
 print(s.startswith("Hello")) # True
 print(s.endswith("era")) # False
+a = '''this is multi line
+string'''
+print(a)  # 'this is multi line\nstring'
 ```
 `.split()` function splits the string, returns a list, where elements are decided based on a delimiter.
 ```python

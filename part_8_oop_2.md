@@ -35,7 +35,7 @@ b2 = Book("Title 1", 39.95)
 b3 = Book("Title 2", 40.95)
 print(b1)  # Title 1 costs 39.95
 print(str(b1))  # Title 1 costs 39.95
-print(repr(b1))  # title=Title 1, price=39.95
+print(b1)  # title=Title 1, price=39.95
 print(b1 == b2)  # True
 print(b1 == b3)  # False
 print(b1 >= b3)  # False
@@ -49,7 +49,9 @@ print(b1 < 40)  # ValueError: Book cannot be compared with another object that i
 By default, objects do not know how to compare with each other. It cannot be perform attribute by attribute comparison.
 The `__eq__` function is called when equality is checked on objects. Similarly, `__ge__` is called for checking greater than
 or equality. `.sort()` function makes use of less than comparison. Hence, if a class has `__lt__` implementation, sort can
-also be performed on a list of objects.
+also be performed on a list of objects.  
+**PS**: if `__gt__` is not implemented, but `__lt__` is then python will reverse the expression containing `>(greater than)`,
+evaluate it with the logic in `__lt__` and return the reverse result. Voila!!  
 Additional magic method names can be found [here](https://docs.python.org/3/reference/datamodel.html#special-method-names)
 
 ```python
