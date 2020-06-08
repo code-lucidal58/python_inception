@@ -19,31 +19,6 @@ cannot be reserved words. Following are the naming conventions:
 * Constants : all uppercase, words separated by underscore
 These conventions are made to write a standardized code, and increase readability.
 
-### Reference counting
-```python
-x = 10
-a = x
-```
-`x` is pointing to an address. When `x` is assigned to `a`, `a` is also referencing the same address that `x` is. Python
-Memory Manager, maintains a table as to how many references are made to a particular memory address. This is called 
-**reference counting**. Once the count drops to zero, the memory location is released. Modules like `sys` and `ctype` provide
-functions to access the reference count table.
-```python
-import ctypes
-import sys
-
-x = [1, 2, 3]
-a = x
-print(id(a))
-print(id(x))  # same as id(a)
-print(sys.getrefcount(a))  # 3
-print(ctypes.c_long.from_address(id(a)).value)  # 2
-```
-Parameters are passed by reference in Python. That is why in `sys.getrefcount`, the count is increased by 1, as the parameter
-in the function is also making a reference to the memory location. To remove this issue, the `ctype` module can be used. 
-When the count is 0, the memory is released and might be being used by other programs. Hence, it is dangerous to deal directly
-with memory.
-
 ## Print statement
 `print` in Python takes only string arguments. If found otherwise, it is implicitly typecast to string. A new line is 
 by default added to the end. When string concatenation is performed using comma in `print`, each part is implicitly 
@@ -91,6 +66,6 @@ print("{0:.2f}".format(x)) # 12.35
 +,-,* and \ having their usual meanings. ** stands for ‘to the power’ i.e. exponent. `2**3 = 8`. % - modulo
 
 If you are searching for some interesting module/program, check [this](./examples/turtle_basic.py) out. 
- 
+
 [Next](./part_1_data_types.md)  
 [Index](/README.md)
