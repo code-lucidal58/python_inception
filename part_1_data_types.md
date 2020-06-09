@@ -1,5 +1,34 @@
 # Python data types
 
+## Statically and Dynamically Typed
+In statically types languages like Java, the data type is also associated with the variable. Python is dynamically typed.
+A variable in Python is just a reference, with no type attached. Hence the same variable can be reassigned to another data
+of different data type.
+```python
+a = "hello"
+print(type(a))  # <class 'str'>
+a = 3 + 4j
+print(type(a))  # <class 'complex'>
+```
+When variable is reassigned, the content is not changed. A new block is is created with the new value, and it reference is
+stored in the variable. This happens for integer
+```python
+a = 10
+print(hex(id(a)))  # 0x10084eb50
+a = 15
+print(hex(id(a)))  # 0x10084eb10 - address changed
+a = 10 + 5
+print(hex(id(a)))  # 0x10084eb10
+```
+An object whose internal state can be changed, is called `mutable`. While, the object whose internal state cannot be changed, 
+is called `immutable`. For example, I have a class, with two attributes. I change the value of one the attributes. The address
+of the object still remains the same. Hence, the object is mutable. In Python,
+* Immutable: numbers(int, float, bool, etc), strings, tuples, frozen sets, user-defined classes(explicit mentions)
+* Mutable: lists, sets, dictionaries, user-defined classes  
+There is a catch here. Suppose we have a tuple of integers. Tuples are immutable and the same goes for integers. Now, suppose
+we have a tuple with lists as element. I can modify the list items, and this will not change the reference of the list, as 
+lists are mutable. 
+
 ## Boolean
 The boolean values are : `True` and `False`. They are also integral values.
 
