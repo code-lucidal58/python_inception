@@ -95,6 +95,17 @@ Once object is deleted, the address will be allotted to som other tasks, hence t
 will print junk value.
 
 ## Shared References and Mutability
+Shared Reference is the concept of two variable referencing to the same object in memory. Python scans if the immutable 
+object already exists, then the variable references to the memory. This does not happen for mutable objects. It creates 
+separate copies of the same data. 
 ```python
-
+a = 10
+b = 10
+print(f"a: {hex(id(a))}, b: {hex(id(b))}")  # a: 0x1038beb50, b: 0x1038beb50
+a = "hello"
+b = "hello"
+print(f"a: {hex(id(a))}, b: {hex(id(b))}")  # a: 0x103b87330, b: 0x103b87330
+l1 = [1, 2, 3]
+l2 = [1, 2, 3]
+print(f"l1: {hex(id(l1))}, l2: {hex(id(l2))}")  # l1: 0x103b64600, l2: 0x103b5f700
 ```
