@@ -19,6 +19,38 @@ cannot be reserved words. Following are the naming conventions:
 * Constants : all uppercase, words separated by underscore
 These conventions are made to write a standardized code, and increase readability.
 
+## Variable equality
+`is` operator checks for memory address, while `==` checks for object state(data). You might wanna read this article before
+moving ahead. [Memory Management](./part_9_memory_management.md)
+```python
+a = 10
+b = 10
+print(a == b, a is b)  # True True
+a = "hello"
+b = "hello"
+print(a == b, a is b)  # True True
+l1 = [1, 2, 3]
+l2 = [1, 2, 3]
+print(l1 == l2, l1 is l2)  # True False
+a = 10
+b = 10 + 0j
+print(a == b, a is b)  # True False
+```
+
+## None
+The `None` object is a real object managed by Python memory manager. If a variable is assigned `None`, that means it does not
+hold any value. There will be only one memory location that will have `None` object throughout the application's lifetime.
+Hence, all variables' with the value `None` would be pointing to the same memory location. Hence, the equality of a variable
+with `None` can be performed using `is` operator. 
+
+## Interning
+Interning meaning reusing objects on demand. At startup, CPython pre-loads (caches) a global list of integers in the range 
+[-5, 256]. Anytime an integer is used in that range, Python will using the cached version. Hence, the numbers in the range
+are singletons objects i.e. instantiated only once. This is done because these numbers are frequently used. Hence, it is
+an optimisation strategy. If variables with reference to numbers outside this range are in the same module, they will still
+be referencing to the same memory location. However, if they are in different modules and one module imports another, the
+variables would be referencing to different memory location.
+
 ## Print statement
 `print` in Python takes only string arguments. If found otherwise, it is implicitly typecast to string. A new line is 
 by default added to the end. When string concatenation is performed using comma in `print`, each part is implicitly 
