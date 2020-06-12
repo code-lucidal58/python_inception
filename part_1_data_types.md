@@ -148,5 +148,22 @@ If a key is being accessed, which does not exist in the dictionary, Python throw
 ## Other data types
 complex, byte, bytearray, tuples, set, frozenset
 
+## Is everything an object?
+Everything is an object. Functions are objects of type function. Similarly, class is an instance of type class. Hence, they
+will also have memory addresses and you should be able create objects by calling the class All classes will have inbuilt 
+documentation. It can be viewed using `help()`.
+```
+a = 10
+print(type(a))  # <class 'int'>
+b = int(10)
+c = int('101', base=2)
+print(type(b), type(c))  # <class 'int'> <class 'int'>
+
+def square(a):
+    return a * a
+
+print(type(square))  # <class 'function'>
+help(int)
+```
 [Next](./part_2_loop_conditionals.md)  
 [Index](/README.md)
