@@ -53,5 +53,27 @@ d = func3
 d() # same as func3
 ```
 
+## Function Arguments and Mutability
+Immutable objects are safe from unintended side-effects. Lets say, a function takes an immutable object as parameter. When 
+function is called, the arguments are passed by reference. Hence, the original value does not suffer from the possibilty
+of being modified. However, if the parameters are mutable, the original data is changed.
+```python
+def change_string(a):
+    a = a + "hello"
+    return a
+
+def change_list(l):
+    l.append(100)
+
+s = "world"
+print("before: s:", s)  # world
+print("function called: ", change_string(s))  # worldhello
+print("after: s:", s)  # world
+l = [1, 2, 3]
+print("before: l:", l)  # [1, 2, 3]
+print("function called:", change_list(l))
+print("after: l:", l)  # [1, 2, 3, 100]
+```
+
 [Next](./part_5_file_handling.md)  
 [Index](/README.md)
