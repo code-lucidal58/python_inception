@@ -29,6 +29,78 @@ There is a catch here. Suppose we have a tuple of integers. Tuples are immutable
 we have a tuple with lists as element. I can modify the list items, and this will not change the reference of the list, as 
 lists are mutable. 
 
+## Numeric Types
+
+### Integers
+`int` is used to store integers. Everything is represented in base 2 in the memory. If the system is n bits, the range of
+numbers that can be stored will be [-2^n, 2^n -1]. The `int` object uses a variable number of bits. It is limited by the
+program's available memory. As the size increases, the standard operations (+,-,*, etc) computation time will also increase.
+If the `int()` constructor is based, it will truncate/typecast values to fit the concept of integer. The constructor takes a
+keyword argument `base`, used to define the base of the number. If base argument is used, the value should be in string type. 
+To convert base10 values to other standard bases, Python provides built-in functions like `hex()`, `oct()`, `bin()`.
+Refer [number_base.py](./examples/number_base.py) for conversion of base10 numbers to other bases.
+```python
+import sys
+import time
+
+print(sys.getsizeof(0))  # 24 (bytes)
+print(sys.getsizeof(1))  # 28 (bytes)
+print(sys.getsizeof(2 ** 1000))  # 160 (bytes)
+
+
+def calc(a):
+    for _ in range(10000000):
+        a * 2
+
+start = time.perf_counter()
+calc(10)
+end = time.perf_counter()
+print(end - start)  # 0.556221267
+
+start = time.perf_counter()
+calc(12 ** 1000)
+end = time.perf_counter()
+print(end - start)  # 2.373679042
+
+print(int("ff", 16))  # 255
+# print(int("B", 11))  # ValueError
+print(oct(10))  # 0o12
+```
+Resultant of operations on int will be: (+,-,*,\**,//(floor division), %) -> int, (/) -> float. Floor division is not the
+same as truncation. 
+
+### Fractions
+`fractions` module can be used to represent fractions. From that module, `Fraction` class is used which takes numerator 
+and denominator. By default, it maintains the sign with the numerator. Numerator and Denominator can be of type int, float, 
+string, decimal. Operations performed on fractions return fraction as result. If irrational numbers are passed as arguments,
+fractions module finds an approximation in form of fraction. `limit_denominator` function can be used to limit the denominator
+value.
+```python
+import math
+from fractions import Fraction
+
+print(repr(Fraction(1)))  # Fraction(1, 1)
+print(repr(Fraction(denominator=8, numerator=4)))  # Fraction(1, 2)
+print(repr(Fraction(denominator=-98, numerator=4)))  # Fraction(-2, 49)
+print(repr(Fraction('0.125')))  # Fraction(1, 8)
+print(repr(Fraction('22/7')))  # Fraction(22, 7)
+
+x = Fraction(2, 3)
+y = Fraction(3, 4)
+print(x.denominator)  # 3
+print(y.numerator)  # 3
+print(repr(x + y))  # Fraction(17, 12)
+print(repr(x * y))  # Fraction(1, 2)
+
+x = Fraction(math.pi)
+print(repr(x))  # Fraction(884279719003555, 281474976710656)
+print(repr(x.limit_denominator(10)))  # Fraction(22, 7)
+print(repr(x.limit_denominator(100)))  # Fraction(311, 99)
+print(repr(x.limit_denominator(500)))  # Fraction(355, 113)
+```
+### Floating point numbers
+
+
 ## Boolean
 The boolean values are : `True` and `False`. They are also integral values.
 
@@ -146,7 +218,9 @@ If a key is being accessed, which does not exist in the dictionary, Python throw
 `.get()` function is used. It takes two arguments: the key to accessed and the default value in case the key does not exist.
 
 ## Other data types
-complex, byte, bytearray, tuples, set, frozenset
+complex, byte, bytearray, tuples, set, frozenset  
+***NOTE***: Searching for membership is faster in sets, as compared to lists and tuples. Hence, membership in dictionary 
+is also fast.
 
 ## Is everything an object?
 Everything is an object. Functions are objects of type function. Similarly, class is an instance of type class. Hence, they
