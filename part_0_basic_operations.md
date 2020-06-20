@@ -49,7 +49,44 @@ Interning meaning reusing objects on demand. At startup, CPython pre-loads (cach
 are singletons objects i.e. instantiated only once. This is done because these numbers are frequently used. Hence, it is
 an optimisation strategy. If variables with reference to numbers outside this range are in the same module, they will still
 be referencing to the same memory location. However, if they are in different modules and one module imports another, the
-variables would be referencing to different memory location.
+variables would be referencing to different memory location.  
+Some strings are also interned, not all. If a string looks like a variable name, it is interned, even if it starts woth a
+number. Python does it for speed and memory optimisation. Do not count on it!! You may intern a string forcefully using
+`sys.intern()`. Use it only when there are lot of repetitions of a string in the module. For example, in NLP. This will
+enable you to compare using addresses which is much faster than comparing values.
+```python
+import sys
+import time
+
+a = "hello"
+b = "hello"
+print(a is b)  # True
+
+def comparing_with_equal(n):
+    a = "long string to study interning" * 200
+    b = "long string to study interning" * 200
+    for i in range(n):
+        if a == b:
+            pass
+
+def comparing_with_interning(n):
+    a = sys.intern("long string to study interning" * 200)
+    b = sys.intern("long string to study interning" * 200)
+    for i in range(n):
+        if a == b:
+            pass
+
+start = time.perf_counter()
+comparing_with_equal(10000000)
+end = time.perf_counter()
+print("equality", end - start)  # equality 3.0510047780000003
+
+start = time.perf_counter()
+comparing_with_interning(10000000)
+end = time.perf_counter()
+print("interning", end - start)  # interning 0.5271638759999999
+
+```
 
 ## Print statement
 `print` in Python takes only string arguments. If found otherwise, it is implicitly typecast to string. A new line is 
