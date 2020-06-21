@@ -99,7 +99,85 @@ print(repr(x.limit_denominator(100)))  # Fraction(311, 99)
 print(repr(x.limit_denominator(500)))  # Fraction(355, 113)
 ```
 ### Floating point numbers
+`float` is used for representing real numbers. They have a fixed size i.e. usually 8 bytes. Sign takes 1 bit, exponent 
+takes 11 bits and the remaining is used by significant digits. (1234.5 -> 5 significant digits, 1234500000-> 5 significant 
+digits, 0.00012345 -> 5 significant digits). Irrational numbers cannot be represented in their exact form. Numbers after 
+decimal point are also converted to base2 while storing in memory. Certain decimal values are finite in base10, but an
+infinite binary representation. For example, 0.1, 0.3, etc. Hence they cannot be stored precisely in the memory. There will
+be an approximate float that is stored. This is a problem with all languages.
+```python
+from fractions import Fraction
 
+print(float(10))  # 10.0
+print(float('12.5'))  # 12.5
+# print(float('22/7')) # ValueError: could not convert string to float: '22/7'
+print(float(Fraction(22, 7)))  # 3.142857142857143
+print(format(0.1, '.15f'))  # 0.100000000000000
+print(format(0.1, '.25f'))  # 0.1000000000000000055511151
+print(format(0.125, '.25f'))  # 0.1250000000000000000000000
+print(format(0.125, '.25f'))  # 0.1250000000000000000000000
+```
+Addition of approx float representations with also be an approximate, even if the expected result is not supposed to be
+an approximation. For equality check, rounding can be used, say till 5 decimal points. This might not be very effective.
+You can use tolerance value to find equality. This can be done using floating absolute in math module i.e. `fabs()`. Tolerance
+can be absolute or relative. For relative tolerance, `tolerance = rel_tolerance(represented as percentage) * max(|x|,|y|)`
+However, relative tolerance does not work well for numbers very close to 0. Hence, a combination of absolute and relative
+tolerance is recommended. `tol = max(rel_tol * max(|x|, |y|), abs_tol)`. The details of this is mentioned in PEP 485. This
+is taken care by `math.isclose`. Use this method for equality checks.
+```python
+from math import isclose
+
+x, y = 0.125 + 0.125 + 0.125, 0.375
+print(x == y)  # True
+x, y = 0.1 + 0.1 + 0.1, 0.3
+print(x == y)  # False
+print(format(x, '.25f'))  # 0.3000000000000000444089210
+print(format(y, '.25f'))  # 0.2999999999999999888977698
+print(round(x, 3) == round(y, 3))  # True
+print(isclose(x, y))  # True
+a, b = 123456789.01, 123456789.02
+x, y = 0.01, 0.02
+print(isclose(a, b, rel_tol=0.01))  # True
+print(isclose(x, y, rel_tol=0.01))  # False
+x, y = 0.0000001, 0.0000002
+print(isclose(x, y, rel_tol=0.01))  # False
+print(isclose(x, y, rel_tol=0.01, abs_tol=0.01))  # True
+print(isclose(a, b, rel_tol=0.01, abs_tol=0.0001))  # True
+```
+When float is converted to integer, there is a data loss. However, we can control how this data loss will take place. 
+**Truncation** returns only the integer portion. `int` uses truncation for floats. **Floor** is the largest integer less
+than or equal to the number. (floor and trunc is same for +ve numbers). **Ceiling** is the smallest integer greater than
+or equal to the number.
+```python
+from math import trunc, floor, ceil
+
+print(trunc(10.3), trunc(10.5), trunc(10.8), trunc(-10.5))  # 10 10 10 -10
+print(floor(10.3), floor(10.5), floor(10.8), floor(-10.5))  # 10 10 10 -11
+print(ceil(10.3), ceil(10.5), ceil(10.8), ceil(-10.3))  # 11 11 11 -10
+``` 
+`round()` will take two arguments. First argument is the number you want to round, and the second is the point to which it 
+will be rounded, approximated to the 10^-n place. When there are ties, for example `round(1.25, 1)`, the number is rounded
+to an even number. Hence the result will be 1.2. This is called **banker's rounding**. `round(15,-1)=20 and round(25,-1)=20`.
+This introduces bias to reduce error due to rounding.
+```python
+print(round(1.9), round(1.9, 0))  # 2 2.0
+print(round(1.888, 3), round(1.888, 2), round(1.888, 1))  # 1.888 1.89 1.9
+print(round(888.88, 1), round(888.88, 0), round(888.88, -1), round(888.88, -2), round(888.88, -3), round(888.88, -4))
+# 888.9 889.0 890.0 900.0 1000.0 0.0
+print(round(1.25, 1), round(1.35, 1), round(-1.25, 1), round(-1.35, 1))  # 1.2 1.4 -1.2 -1.4
+
+def _round(x):  # rounding away from zero
+    from math import copysign
+    return int(x + 0.5 * copysign(1, x))
+
+print(round(1.5), _round(1.5))  # 2 2
+print(round(2.5), _round(2.5))  # 2 3
+print(round(-1.5), _round(-1.5))  # -2 -2
+print(round(-2.5), _round(-2.5))  # -2 -3
+```
+
+### Decimal
+Using `decimal` module, decimals can be represented. 
 
 ## Boolean
 The boolean values are : `True` and `False`. They are also integral values.
