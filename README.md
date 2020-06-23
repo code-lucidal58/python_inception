@@ -1,18 +1,24 @@
 # Python Inception
 
 Python is a dynamically written object-oriented programming language. 
-The tutorials are in the sequence of the file name. Sample scripts are located in examples folder.  
+The tutorials are in the sequence of the file name. Sample scripts are located in examples folder. Python used in this 
+repository is CPython, that is python interpreter written in C. The code written using Python is compiled in runtime.
+The same compiled code is reused multiple times. Hence, Python optimises the execution. For example, constant expressions
+and sequences with length less than 20 characters are precalculated and stored. 
 
-***Sources: PluralSight, Hackerrank, LinkedIn Learning, Edx***
+Version: 3.8.x
+
+***Sources: PluralSight, Hackerrank, LinkedIn Learning, Edx, Udemy***
 
 ## Index
 The beginner concepts are explained using markdown as well as python code. The sequence is as follows:
-* [Part 0 : Basic Operations](./part_0_basic_operations.md) 
-* [Part 1 : Data Types](./part_1_data_types.md) 
-* [Part 2 : Loop and Conditional](./part_2_loop_conditionals.md) 
-* [Part 3 : Date and Time](./part_3_date_time.md) 
-* [Part 4 : Functions](./part_4_functions.md)
-* [Part 5 : File Handling](./part_5_file_handling.md)
-* [Part 6 : Web Data Handling](./part_6_web_data_handling.md)
-* [Part 7 : Object Oriented Programming 1](./part_7_oop_1.md)
-* [Part 8 : Object Oriented Programming 2](./part_8_oop_2.md)
+* [Basic Operations](basic_operations.md) 
+* [Data Types](data_types.md) 
+* [Loop and Conditional](loop_conditionals.md) 
+* [Date and Time](date_time.md) 
+* [Functions](functions.md)
+* [File Handling](file_handling.md)
+* [Web Data Handling](web_data_handling.md)
+* [Object Oriented Programming 1](oop_1.md)
+* [Object Oriented Programming 2](oop_2.md)
+* [Memory Management](memory_management.md)

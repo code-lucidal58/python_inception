@@ -14,8 +14,8 @@ another class. The built-in initialization function is `__init__`. It can be ove
 first one to be called when the object is created. To repeat, this function is implicitly called after object is created.
 Therefore, it will not be appropriate to call it the constructor. Rather, it is the initializing function, for initializing 
 attributes. 
-All methods have their first attribute as the object itself. This parameter is by convention called `self`. Of course,
-there are exceptions to the first parameter being the object itself.
+All methods(procedural attributes) have their first attribute as the object itself. This parameter is by convention called 
+`self`. Of course, there are exceptions to the first parameter being the object itself.
 ```python
 class Book:
     def __init__(self, title, price):
@@ -52,7 +52,7 @@ mangling. Compiler adds the class name in front of the such attributes.
 
 There are two ways of check the type of an object. One way is using the built-in `type` function and checking the output string,
 or using `isinstance` function. This function checks for parent class as well. That is why, `isinstance(b, object)` return true,
-because all classes in Python inherit `object` class. 
+because all classes in Python inherit `object` class. Meaning, `object` is the most basic data type.
 
 ```python
 class Book:
@@ -307,5 +307,5 @@ b.add_chapter(Chapter("c3", 89))
 print(b.title, b.author, b.get_book_page_counts()) # War and Peace Leo Tolstoy 408
 ```
 
-[Next](./part_8_oop_2.md)  
+[Next](oop_2.md)  
 [Index](/README.md)

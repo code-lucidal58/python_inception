@@ -317,5 +317,5 @@ def square(a):
 print(type(square))  # <class 'function'>
 help(int)
 ```
-[Next](./part_2_loop_conditionals.md)  
+[Next](./loop_conditionals.md)  
 [Index](/README.md)

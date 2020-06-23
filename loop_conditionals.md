@@ -1,5 +1,6 @@
 # Loops and Conditionals
 Python supports **for, while, if-elif-else** blocks.
+
 ## If-elif-else
 The concept of if-else block is similar to any other language.
 ```Python
@@ -88,5 +89,5 @@ This will print square of all numbers from 1 to 100.
 `else` can be added to the end of `for` loop, executed when `for` is NOT stopped by `break`, i.e. if `for` loop had smooth 
 execution till end of condition.
 
-[Next](./part_3_date_time.md)  
+[Next](./date_time.md)  
 [Index](/README.md)

@@ -21,7 +21,7 @@ These conventions are made to write a standardized code, and increase readabilit
 
 ## Variable equality
 `is` operator checks for memory address, while `==` checks for object state(data). You might wanna read this article before
-moving ahead. [Memory Management](./part_9_memory_management.md)
+moving ahead. [Memory Management](memory_management.md)
 ```python
 a = 10
 b = 10
@@ -125,16 +125,11 @@ and b\
 and c: # indentation does not matter here
     pass
 ```
-## Rounding of numbers
-```python
-x = 12.3456789
-print(round(x,2)) #12.35
-print("{0:.2f}".format(x)) # 12.35
-```
+
 ## Mathematical Operators
 +,-,* and \ having their usual meanings. ** stands for ‘to the power’ i.e. exponent. `2**3 = 8`. % - modulo
 
 If you are searching for some interesting module/program, check [this](./examples/turtle_basic.py) out. 
 
-[Next](./part_1_data_types.md)  
+[Next](./data_types.md)  
 [Index](/README.md)

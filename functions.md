@@ -75,5 +75,5 @@ print("function called:", change_list(l))
 print("after: l:", l)  # [1, 2, 3, 100]
 ```
 
-[Next](./part_5_file_handling.md)  
+[Next](file_handling.md)  
 [Index](/README.md)

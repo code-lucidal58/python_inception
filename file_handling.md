@@ -50,5 +50,5 @@ with ZipFile("textarchive.zip", "w") as newzip:
     newzip.write("textfile.txt.bak")
 ```
 
-[Next](./part_6_web_data_handling.md)  
+[Next](web_data_handling.md)  
 [Index](/README.md)
